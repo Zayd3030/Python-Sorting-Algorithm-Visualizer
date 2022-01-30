@@ -9,7 +9,7 @@ class DrawInfomation:
     RED = 255, 0, 0
     GREY = 128, 128, 128
     BACKGROUND_COLOUR = WHITE
-    
+
     SIDE_PAD = 100
     TOP_PAD = 150
 
@@ -32,6 +32,7 @@ class DrawInfomation:
 
 def draw(draw_info):
     draw_info.window.fill(draw_info.BACKGROUND_COLOUR)
+    pygame.display.update()
 
 def generate_starting_list(n, min_val, max_val):
     lst = []
@@ -55,7 +56,7 @@ def main():
 
     while run:
         clock.tick(60)
-
+        draw(draw_info)
         
 
         for event in pygame.event.get():
