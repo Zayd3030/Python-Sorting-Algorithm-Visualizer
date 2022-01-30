@@ -1,4 +1,3 @@
-from matplotlib.pyplot import draw
 import pygame
 import random
 pygame.init()
@@ -10,6 +9,7 @@ class DrawInfomation:
     RED = 255, 0, 0
     GREY = 128, 128, 128
     BACKGROUND_COLOUR = WHITE
+    
     SIDE_PAD = 100
     TOP_PAD = 150
 
@@ -22,13 +22,16 @@ class DrawInfomation:
         self.set_list(lst)
     
     def set_list(self, lst):
-        self.lst + lst
+        self.lst = lst
         self.min_val = min(lst)
         self.max_val = max(lst)
 
         self.block_width = round((self.width - self.SIDE_PAD) / len(lst))
         self.block_height = round((self.height - self.TOP_PAD) / (self.max_val - self.min_val))
         self.start_x = self.SIDE_PAD // 2
+
+def draw(draw_info):
+    draw_info.window.fill(draw_info.BACKGROUND_COLOUR)
 
 def generate_starting_list(n, min_val, max_val):
     lst = []
@@ -53,13 +56,13 @@ def main():
     while run:
         clock.tick(60)
 
-        pygame.display.update()
+        
 
         for event in pygame.event.get():
-            if event == pygame.QUIT:
+            if event.type == pygame.QUIT:
                 run = False
 
     pygame.quit()
 
-if __name__== "__main__":
+if __name__ == "__main__":
     main()
