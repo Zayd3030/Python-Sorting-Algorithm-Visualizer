@@ -9,6 +9,8 @@ class DrawInfomation:
     RED = 255, 0, 0
     GREY = 128, 128, 128
     BACKGROUND_COLOUR = WHITE
+    SIDE_PAD = 100
+    TOP_PAD = 150
 
     def __init__(self, width, height, lst):
         self.width = width
@@ -19,5 +21,11 @@ class DrawInfomation:
         self.set_list(lst)
     
     def set_list(self, lst):
-        pass
+        self.lst + lst
+        self.min_val = min(lst)
+        self.max_val = max(lst)
+
+        self.block_width = round((self.width - self.SIDE_PAD) / len(lst))
+        self.block_height = round((self.height - self.TOP_PAD) / (self.max_val - self.min_val))
+        self.start_x = self.SIDE_PAD // 2
 
